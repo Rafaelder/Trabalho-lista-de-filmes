@@ -63,7 +63,8 @@ function comecar(){                                                        //Só
             adicionarFilme()
         }else if(opcao == 1){
 
-        }
+        }else
+            alert("\n -----------------! Opção invalida! ------------------\n")
     } while (sair == 0)
 
 
