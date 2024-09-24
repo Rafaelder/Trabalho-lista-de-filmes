@@ -2,7 +2,7 @@ function comecar(){                                                        //Só
 
 
     let listaAssistidos = [], listaParaAssistir = []                       // 2 arrays para armazenar os filmes; Funcionam como 2 listas de filmes 
-    let filme, sair = 0, opcao
+    let filme = null, sair = 0, opcao=-1
 
     /*Função para pesquisar um filme específico em algum dos arrays; Pode ter a opção de selecionar o array 
     em que se quer fazer a pesquisa e depois se o usuario quer pesquisar por titulo, genero ou ano de lançamento*/
@@ -12,8 +12,27 @@ function comecar(){                                                        //Só
     
     /*Função para adicionar novos filmes, com seu titulo, genero e/ou ano; pode dar a opção de escolher em qual
     das listas/arrays voce quer adicionar o filme e deve adicionar-los no array em ordem do mais novo para o mais antigo*/
-    function adicionarFilme(){                                            
-
+    function adicionarFilme(){  
+        console.log("\n -----------------Adicionando-filme----------------------\n")                                          
+        let titulo = prompt("Digite o título do filme: ")
+        let genero = prompt("Gênero: ")
+        let ano = prompt("Ano de lançamento: ")
+        filme = new Filme(titulo, genero, ano)
+        console.log("\n1 - Filmes para assistir")
+        console.log("2 - Filmes assistidos\n")
+        opcao = prompt("Em qual lista deseja adicionar o filme? ")
+        if(opcao == 1){                                                                 // talvez tenha que tratar para que adicione direto no 0 caso o array esteja vazio
+            for(let i = listaParaAssistir.length; i > 0; i--){
+                listaParaAssistir[i] = listaParaAssistir[i-1];
+            } listaParaAssistir[0] = filme
+            console.log("\n--------Filme adicionado na lista de filmes para Assistir--------\n")
+        }else if(opcao == 2){
+            for(let i = listaAssistidos.length; i > 0; i--){
+                listaAssistidos[i] = listaAssistidos[i-1];
+            } listaAssistidos[0] = filme
+            console.log("\n--------Filme adicionado na lista de filmes Assistidos--------\n")
+        }
+    
     }
 
     /*Função para alterar algo em algum dos filmes; Pode perguntar se o usuario quer mudar um filme de lista(De assistir para assistido) ou se quer alterar o atributo de algum deles;
